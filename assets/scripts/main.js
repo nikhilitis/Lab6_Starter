@@ -75,7 +75,7 @@ function saveRecipesToStorage(recipes) {
   // B1. TODO - Complete the functionality as described in this function
   //            header. It is possible in only a single line, but should
   //            be no more than a few lines.
-  return JSON.stringify(recipes);
+  localStorage.setItem("recipes", JSON.stringify(recipes));
 }
 
 /**
@@ -121,13 +121,15 @@ function initFormHandler() {
     // B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
     //            then save the recipes array back to localStorage
     let recipes = getRecipesFromStorage();
-    recipes.push(recipeCard);
+    recipes.push(recipeObject);
+    //alert(JSON.stringify(recipes));
     saveRecipesToStorage(recipes);
 
   });
 
   // B10. TODO - Get a reference to the "Clear Local Storage" button
-  let clearStorageElement = document.getElementsByClassName("danger");
+  let clearStorageElement = document.getElementsByClassName("danger").item(0);
+  //let clearStorageElement = document.querySelector("button")[1];
 
   // B11. TODO - Add a click event listener to clear local storage button
   clearStorageElement.addEventListener("click", function() {
